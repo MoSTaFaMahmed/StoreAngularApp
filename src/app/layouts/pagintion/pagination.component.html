@@ -1,0 +1,23 @@
+<div class="pagination-wrapper">
+  <button
+    class="pagination-btn"
+    [disabled]="currentPage === 1"
+    (click)="changePage(currentPage - 1)">
+    {{'User.prev' | translate}}
+  </button>
+
+  <button
+    *ngFor="let page of pageNumbers"
+    class="pagination-btn"
+    [class.active]="page === currentPage"
+    (click)="changePage(page)">
+    {{ page }}
+  </button>
+
+  <button
+    class="pagination-btn"
+    [disabled]="currentPage === totalPages"
+    (click)="changePage(currentPage + 1)">
+    {{'User.next' | translate}}
+  </button>
+</div>
