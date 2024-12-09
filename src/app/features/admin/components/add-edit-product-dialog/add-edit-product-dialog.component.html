@@ -1,0 +1,30 @@
+<h2 mat-dialog-title>{{ isEdit ? ('Admin.productForm.editProduct' | translate) : ('Admin.productForm.addProduct' | translate) }}</h2>
+
+<div class="container">
+  <form [formGroup]="productForm" (ngSubmit)="onSubmit()">
+    <mat-form-field>
+      <mat-label>{{ 'Admin.productForm.name' | translate }}</mat-label>
+      <input matInput formControlName="title" />
+    </mat-form-field>
+
+    <mat-form-field>
+      <mat-label>{{ 'Admin.productForm.price' | translate }}</mat-label>
+      <input matInput formControlName="price" type="number" />
+    </mat-form-field>
+
+    <mat-form-field>
+      <mat-label>{{ 'Admin.productForm.category' | translate }}</mat-label>
+      <mat-select formControlName="category">
+        <mat-option *ngFor="let category of categories" [value]="category">
+          {{ category }}
+        </mat-option>
+      </mat-select>
+    </mat-form-field>
+
+    <div mat-dialog-actions>
+      <button mat-button (click)="onNoClick()">{{ 'Admin.productForm.cancel' | translate }}</button>
+      <button mat-raised-button color="primary" [disabled]="productForm.invalid">{{ 'Admin.productForm.save' | translate }}</button>
+    </div>
+  </form>
+
+</div>

@@ -1,0 +1,49 @@
+<div class="add-product">
+  <button mat-raised-button color="#ff7a33" (click)="openAddProductDialog()">{{ 'Admin.productList.addProduct' | translate }}</button>
+</div>
+
+<div *ngIf="!loading" class="container">
+
+  <div class="table-container">
+    <table mat-table [dataSource]="paginatedProducts" class="mat-elevation-z8">
+      <ng-container matColumnDef="name">
+        <th mat-header-cell *matHeaderCellDef>  {{ 'Admin.productList.productName' | translate }} </th>
+        <td mat-cell *matCellDef="let product">{{ product.title }}</td>
+      </ng-container>
+
+      <ng-container matColumnDef="price">
+        <th mat-header-cell *matHeaderCellDef>  {{ 'Admin.productList.price' | translate }} </th>
+        <td mat-cell *matCellDef="let product">{{ product.price | currency }}</td>
+      </ng-container>
+
+      <ng-container matColumnDef="category">
+        <th mat-header-cell *matHeaderCellDef> {{ 'Admin.productList.category' | translate }} </th>
+        <td mat-cell *matCellDef="let product">{{ product.category }}</td>
+      </ng-container>
+
+      <ng-container matColumnDef="actions">
+        <th mat-header-cell *matHeaderCellDef>  {{ 'Admin.productList.actions' | translate }} </th>
+        <td mat-cell *matCellDef="let product">
+          <button mat-button (click)="openEditProductDialog(product)"> {{ 'Admin.productList.edit' | translate }}</button>
+          <button mat-button color="warn" (click)="deleteProduct(product)"> {{ 'Admin.productList.delete' | translate }}</button>
+        </td>
+      </ng-container>
+
+      <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+      <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+    </table>
+  </div>
+
+  <app-pagination
+   *ngIf="!loading"
+    [totalItems]="products.length"
+    [pageSize]="pageSize"
+    [currentPage]="currentPage"
+    (pageChange)="onPageChange($event)">
+  </app-pagination>
+</div>
+
+
+<div *ngIf="loading" class="loading-spinner">
+  <mat-spinner diameter="50"></mat-spinner>
+</div>

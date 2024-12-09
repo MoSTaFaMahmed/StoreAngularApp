@@ -1,0 +1,33 @@
+<div class="wrapper">
+
+  <categories-component
+    [categories]="categories"
+    [selectedCategory]="selectedCategory"
+    (categorySelected)="onCategorySelected($event)">
+  </categories-component>
+
+
+  <div *ngIf="loading" class="loading-spinner">
+    <mat-spinner diameter="50"></mat-spinner>
+  </div>
+
+
+  <div class="product-list" *ngIf="!loading" [@listAnimation]>
+    <div *ngFor="let product of paginatedProducts" class="product-card">
+      <img [src]="product.image" alt="{{ product.title }}" class="product-image" />
+      <h3>{{ product.title }}</h3>
+      <p>{{ product.description | slice: 0:100 }}...</p>
+      <span class="price">{{ product.price | currency }}</span>
+      <app-rating [rating]="product.rating.rate" [count]="product.rating.count"></app-rating>
+    </div>
+  </div>
+
+
+  <app-pagination
+  *ngIf="!loading"
+    [totalItems]="products.length"
+    [pageSize]="pageSize"
+    [currentPage]="currentPage"
+    (pageChange)="onPageChange($event)">
+  </app-pagination>
+</div>

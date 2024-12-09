@@ -1,0 +1,6 @@
+<h2 mat-dialog-title>{{ 'Admin.productMessages.deleteConfirmation' | translate }}</h2>
+<h3 style="text-align: center;">{{productName}}</h3>
+<mat-dialog-actions>
+  <button mat-button (click)="dialogRef.close(false)">{{ 'Admin.productForm.cancel' | translate }}</button>
+  <button mat-raised-button color="warn" (click)="dialogRef.close(true)">{{ 'Admin.productList.delete' | translate }}</button>
+</mat-dialog-actions>

@@ -1,0 +1,144 @@
+.navbar {
+  background: linear-gradient(90deg, #99867e, #FF7A33);
+  color: white;
+  padding: 1rem 2rem;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  overflow: hidden;
+
+  .navbar-container {
+    max-width: 1200px;
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+    .navbar-title {
+      font-size: 1.8rem;
+      font-weight: bold;
+      letter-spacing: 0.05em;
+      text-transform: uppercase;
+      text-shadow: 1px 1px 4px rgba(0, 0, 0, 0.3);
+      color: white;
+    }
+
+    .toggle-lang {
+      background-color: white;
+      color: #FF4D00;
+      font-weight: bold;
+      padding: 0.5rem 1.2rem;
+      border: none;
+      border-radius: 30px;
+      box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+      transition: all 0.3s ease;
+      cursor: pointer;
+
+      &:hover {
+        background-color: #FF2600;
+        color: white;
+        box-shadow: 0 6px 8px rgba(0, 0, 0, 0.2);
+        transform: translateY(-2px);
+      }
+
+      &:active {
+        transform: translateY(0);
+        box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+      }
+    }
+
+    .user-menu-button {
+      display: flex;
+      align-items: center;
+      color: white;
+      font-weight: 600;
+      position: relative;
+
+      mat-icon {
+        margin-right: 8px;
+        font-size: 1.6rem;
+      }
+
+      .role-text {
+        font-size: 1.2rem;
+      }
+
+      &:hover {
+        background-color: rgba(255, 255, 255, 0.1);
+        cursor: pointer;
+      }
+    }
+
+    mat-menu {
+      background-color: #fff;
+      border-radius: 8px;
+      box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
+      animation: fadeIn 0.3s ease-out;
+      margin-top: 8px;
+      width: 100%;
+      min-width: 150px;
+    }
+
+    mat-menu-item {
+      display: flex;
+      align-items: center;
+      padding: 0.8rem 1.2rem;
+      font-weight: 500;
+      transition: background-color 0.3s, padding-left 0.3s;
+
+      mat-icon {
+        margin-right: 12px;
+      }
+
+      &:hover {
+        background-color: #FF7A33;
+        color: white;
+        padding-left: 1.5rem;
+      }
+
+      &:focus {
+        outline: none;
+        background-color: #FF7A33;
+        color: white;
+      }
+    }
+  }
+}
+
+
+@media (max-width: 768px) {
+  .navbar-container {
+    width: 100%;
+    flex-direction: column;
+    gap: 15px;
+    padding: 1rem;
+  }
+
+  .navbar-title {
+    font-size: 1.5rem;
+    margin-bottom: 1rem;
+  }
+
+  .toggle-lang {
+    margin-top: 1rem;
+  }
+
+  .user-menu-button {
+    margin-top: 1rem;
+  }
+}
+
+@keyframes fadeIn {
+  0% {
+    opacity: 0;
+    transform: translateY(-10px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}

@@ -1,0 +1,9 @@
+<div class="rating-wrapper">
+  <div class="rating">
+    <span *ngFor="let star of stars; let i = index" [ngClass]="{'filled': i < rating}">
+      ★
+    </span>
+    <span>({{ count }} reviews)</span>
+  </div>
+
+</div>

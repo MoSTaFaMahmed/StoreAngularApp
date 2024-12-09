@@ -1,0 +1,28 @@
+<section class="wrapper">
+  <form class="form-container" [formGroup]="loginForm">
+    <h3 class="form-title">{{ 'Login.formTitle' | translate }}</h3>
+
+    <mat-form-field class="form-field" appearance="outline">
+      <mat-label>{{ 'Login.usernameLabel' | translate }}</mat-label>
+      <input type="username" matInput formControlName="username" />
+      <mat-error *ngIf="loginForm.get('username')?.hasError('required')">
+        {{ 'Login.usernameRequiredError' | translate }}
+      </mat-error>
+      <mat-error *ngIf="loginForm.get('username')?.hasError('username')">
+        {{ 'Login.usernameInvalidError' | translate }}
+      </mat-error>
+    </mat-form-field>
+
+    <mat-form-field class="form-field" appearance="outline">
+      <mat-label>{{ 'Login.passwordLabel' | translate }}</mat-label>
+      <input type="password" matInput formControlName="password" />
+      <mat-error *ngIf="loginForm.get('password')?.hasError('required')">
+        {{ 'Login.passwordRequiredError' | translate }}
+      </mat-error>
+    </mat-form-field>
+
+    <button mat-stroked-button (click)="onSubmit()" [disabled]="loginForm.invalid">
+      {{ 'Login.submitButton' | translate }}
+    </button>
+  </form>
+
